@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+        
+        <link rel="stylesheet" type="text/css" href="styles/jquery.mobile-1.4.5.css"/>
+        <link rel="stylesheet" type="text/css" href="styles/custom.css"/>
+
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js" type="text/javascript"></script>
+        <script src="js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="js/jquery.DatabaseObject.js" type="text/javascript"></script>
+        <script src="js/jquery.LoginObject.js" type="text/javascript"></script>
+        <script src="js/jquery.AjaxJSON.js" type="text/javascript"></script>
+        <script src="js/jquery.GetData.js" type="text/javascript"></script>
+        <script src="js/jquery.MainEvents.js" type="text/javascript"></script>
+
+        <title>LOGOUT PAGE</title>
+    </head>
+    <body>
+        <div data-role="page" id="logout_page">
+            <div data-role="header">
+                <h3 class="text-center"><u>LOGOUT PAGE</u></h3>
+            </div>
+            <div data-role="main" class="ui-content">
+                <h3 class="text-center error">LOGGING OUT ....... </h3>
+            </div>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script>
+            function UserLoggedOut(bLoggedOut){
+                if(bLoggedOut){
+                    window.location = "index.html";
+                }else{
+                    alert("COULD NOT LOG OUT. PLEASE TRY AGAIN");
+                }
+            }
+            
+            function DeviceLoaded(){
+                if(!oLoginObject.CheckUserLoggedIn()){
+                    window.location = "index.html";
+                }else{
+                    var data = {
+                        user_id     : oLoginObject.GetUserID(),
+                        session_id  : oLoginObject.GetSessionID(),
+                        from        : 'LOGOUT_ADMIN_APPLICATION'
+                    };
+                    oLoginObject.LogUserOut(data,UserLoggedOut);
+                }
+            }
+        </script>
+    </body>
+</html>
