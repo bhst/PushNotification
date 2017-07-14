@@ -9,7 +9,7 @@ $.DatabaseObject = function(){
         _sVersion           : "1.0",
         _sDisplayName       : "DATABASE OF APP NAME",
         _iMaxSize           : 65536,
-        _sHostName          : "http://192.168.1.194/Push/"
+        _sHostName          : "http://bhsbrothers.com/Push/"
     };
     
     _connectDB = function(){
